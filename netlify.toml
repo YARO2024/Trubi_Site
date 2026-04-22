@@ -1,0 +1,18 @@
+# Публикация: перетащите папку проекта на https://app.netlify.com/drop
+# или подключите репозиторий Git к Netlify / Cloudflare Pages.
+
+[build]
+  publish = "."
+
+# Корректный тип для PWA-манифеста (иконка сайта при «Добавить на экран»)
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json; charset=utf-8"
+
+# SPA не используется — чистый статический сайт
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"

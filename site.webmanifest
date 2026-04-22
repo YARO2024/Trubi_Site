@@ -1,0 +1,18 @@
+{
+  "name": "SLT-Узел Тольятти",
+  "short_name": "SLT-Узел",
+  "description": "Трубы и фитинги СЛТ Аква, SLT BLOCKFIRE — Тольятти",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#060b14",
+  "background_color": "#060b14",
+  "display": "standalone",
+  "start_url": "./",
+  "lang": "ru"
+}
