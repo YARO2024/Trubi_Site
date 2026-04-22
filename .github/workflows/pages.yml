@@ -25,11 +25,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Убрать из публикации служебные папки (не нужны на сайте)
-        run: rm -rf .github tools
-
+      # Сначала configure-pages, затем — только файлы для сайта
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Убрать из публикации служебные папки (не нужны на сайте)
+        run: rm -rf .github tools
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

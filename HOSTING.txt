@@ -51,9 +51,18 @@ GitHub Pages + Git (обновление одной командой push)
    git commit -m "Первый коммит сайта"
    git push -u origin main
 
-3. На GitHub: Settings → Pages → **Build and deployment** → Source: **GitHub Actions**
-   (не «Deploy from a branch»). Откройте вкладку Actions — при первом push запустится деплой.
-4. Сайт будет по адресу: **https://ВАШ_ЛОГИН.github.io/ИМЯ_РЕПО/**
+3. На GitHub: Settings → **Pages** → **Build and deployment** → Source: **GitHub Actions**
+   (не «Deploy from a branch»). Сохраните.
+4. Settings → **Actions** → **General** → раздел *Workflow permissions*:
+   поставьте **Read and write permissions** (нужно, чтобы GITHUB_TOKEN мог публиковать Pages).
+5. Сайт будет по адресу: **https://ВАШ_ЛОГИН.github.io/ИМЯ_РЕПО/**
+
+Если в разделе Environments (Deployments) environment **github-pages** с красным крестиком:
+   • Откройте **Actions** → последний **failed** run → внизу прочитайте текст ошибки.
+   • Settings → **Environments** → **github-pages** — отключите *Required reviewers*, если
+     деплой «висит» в ожидании одобрения.
+   • Убедитесь, что в п.3 выбран именно **GitHub Actions**, затем: Actions →
+     **Re-run all jobs** для последнего workflow.
 
 Дальше при любых правках:
 
