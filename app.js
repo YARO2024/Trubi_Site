@@ -1,5 +1,5 @@
 (function () {
-  var header = document.querySelector(".site-header");
+  var header = document.querySelector(".site-head");
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.querySelector(".site-nav");
 

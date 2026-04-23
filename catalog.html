@@ -20,48 +20,55 @@
 <body>
 <a class="skip-link" href="#catalog-main">К каталогу</a>
 <div id="top" class="anchor-page-top" tabindex="-1" aria-hidden="true"></div>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="logo" href="index.html" aria-label="SLT-Узел Тольятти — на главную">
-      <span class="logo-icon" aria-hidden="true">
-        <svg class="logo-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="logo-grad-pipe-cat" x1="10" y1="10" x2="38" y2="38" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#ff7a35" />
-              <stop offset="1" stop-color="#22d3ee" />
-            </linearGradient>
-            <linearGradient id="logo-grad-shine-cat" x1="24" y1="14" x2="24" y2="34" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#ffffff" stop-opacity="0.22" />
-              <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
-            </linearGradient>
-          </defs>
-          <rect x="3" y="3" width="42" height="42" rx="13" fill="#15243d" stroke="url(#logo-grad-pipe-cat)" stroke-width="1.5" />
-          <path
-            d="M11 23.5h26M24 23.5v15.5"
-            stroke="url(#logo-grad-pipe-cat)"
-            stroke-width="5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M11 22.5h26M24 22.5v15.5"
-            stroke="url(#logo-grad-shine-cat)"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <circle cx="24" cy="23.5" r="8" fill="#0b1424" stroke="url(#logo-grad-pipe-cat)" stroke-width="2" />
-          <circle cx="24" cy="23.5" r="3.2" fill="#ff5c1a" />
-        </svg>
-      </span>
-      <span class="logo-text-stack">
-        <span class="logo-text-line1">SLT-<strong>Узел</strong></span>
-        <span class="logo-text-line2">каталог</span>
-      </span>
-    </a>
-    <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="cat-nav" aria-label="Меню">
-      <span></span><span></span><span></span>
-    </button>
+<div class="site-head">
+  <div class="container site-head__shell">
+    <div class="site-head__bar">
+      <div class="site-head__bg" aria-hidden="true"></div>
+      <a class="logo" href="index.html" aria-label="SLT-Узел Тольятти — на главную">
+        <span class="logo-icon" aria-hidden="true">
+          <svg class="logo-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="logo-grad-pipe-cat" x1="10" y1="10" x2="38" y2="38" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ff7a35" />
+                <stop offset="1" stop-color="#22d3ee" />
+              </linearGradient>
+              <linearGradient id="logo-grad-shine-cat" x1="24" y1="14" x2="24" y2="34" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ffffff" stop-opacity="0.22" />
+                <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <rect x="3" y="3" width="42" height="42" rx="13" fill="#15243d" stroke="url(#logo-grad-pipe-cat)" stroke-width="1.5" />
+            <path
+              d="M11 23.5h26M24 23.5v15.5"
+              stroke="url(#logo-grad-pipe-cat)"
+              stroke-width="5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M11 22.5h26M24 22.5v15.5"
+              stroke="url(#logo-grad-shine-cat)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <circle cx="24" cy="23.5" r="8" fill="#0b1424" stroke="url(#logo-grad-pipe-cat)" stroke-width="2" />
+            <circle cx="24" cy="23.5" r="3.2" fill="#ff5c1a" />
+          </svg>
+        </span>
+        <span class="logo-text-stack">
+          <span class="logo-text-line1">SLT-<strong>Узел</strong></span>
+          <span class="logo-text-line2">каталог</span>
+        </span>
+      </a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="cat-nav" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="header-contact">
+        <a class="tel" href="tel:+79278972233">+7 927 897-22-33</a>
+        <a class="btn btn-sm btn-ghost" href="https://wa.me/79278972233" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+    </div>
     <nav class="site-nav" id="cat-nav" aria-label="Каталог">
       <a href="index.html#lead">Заявка / прайс</a>
       <a href="index.html#contacts">Контакты</a>
@@ -71,12 +78,8 @@
       <a href="#cat-slt-pe-rt">PE-RT</a>
       <a href="#cat-instrumenty">Инструменты</a>
     </nav>
-    <div class="header-contact">
-      <a class="tel" href="tel:+79278972233">+7 927 897-22-33</a>
-      <a class="btn btn-sm btn-ghost" href="https://wa.me/79278972233" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </div>
   </div>
-</header>
+</div>
 <main id="catalog-main" class="catalog-page-wrap">
   <section class="section section-tight catalog-hero">
     <div class="container">

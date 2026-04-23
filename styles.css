@@ -148,31 +148,77 @@ a:hover {
   opacity: 0.95;
 }
 
-/* Header */
-.site-header {
-  position: sticky;
-  top: 0;
+/* Header: на телефоне меню position:fixed вне липкой полосы — иначе iOS/WebKit обрезает панель */
+.site-head {
+  position: relative;
   z-index: 100;
-  height: var(--header-h);
-  display: flex;
-  align-items: center;
-  background: rgba(6, 11, 20, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
   transition: box-shadow 0.2s ease;
 }
 
-.site-header.is-scrolled {
+.site-head.is-scrolled {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
-.header-inner {
+.site-head__shell {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  min-height: var(--header-h);
+}
+
+.site-head__bar {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 1.25rem;
   width: 100%;
   min-width: 0;
+  min-height: var(--header-h);
+}
+
+.site-head__bg {
+  display: none;
+}
+
+@media (min-width: 961px) {
+  .site-head {
+    position: sticky;
+    top: 0;
+    background: rgba(6, 11, 20, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-head__bar {
+    display: contents;
+  }
+
+  .site-head__bar .site-head__bg {
+    display: none;
+  }
+
+  .site-head__shell .logo {
+    order: 1;
+  }
+
+  .site-head__shell .site-nav {
+    order: 2;
+    flex: 1 1 auto;
+    margin-left: 2rem;
+    margin-right: 0;
+    min-width: 0;
+  }
+
+  .site-head__shell .header-contact {
+    order: 3;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  .site-head__shell .nav-toggle {
+    order: 4;
+  }
 }
 
 .logo {
@@ -1985,18 +2031,68 @@ body.nav-open .scroll-top-fab {
   html {
     overflow-x: hidden;
     overscroll-behavior-x: none;
+    width: 100%;
+    max-width: 100%;
   }
 
   body {
     overflow-x: hidden;
     overscroll-behavior-x: none;
+    width: 100%;
+    max-width: 100%;
   }
 
-  /* Без blur у шапки: иначе fixed-панель .site-nav привязывается к шапке и схлопывается по высоте */
-  .site-header {
-    background: rgba(6, 11, 20, 0.94);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+  main,
+  .catalog-page-wrap {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .site-head {
+    padding-top: var(--header-h);
+  }
+
+  .site-head.is-scrolled {
+    box-shadow: none;
+  }
+
+  .site-head__shell {
+    display: block;
+    min-height: 0;
+  }
+
+  .site-head__shell.container {
+    max-width: 100%;
+  }
+
+  .site-head__bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    box-sizing: border-box;
+    padding-left: max(var(--gutter-x), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter-x), env(safe-area-inset-right, 0px));
+    border-bottom: 1px solid var(--border);
+    background: rgba(6, 11, 20, 0.96);
+  }
+
+  .site-head__bar .site-head__bg {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: inherit;
+    pointer-events: none;
+  }
+
+  .logo {
+    flex-shrink: 0;
+    min-width: min-content;
   }
 
   .logo-text-stack {
@@ -2005,6 +2101,8 @@ body.nav-open .scroll-top-fab {
 
   .nav-toggle {
     display: flex;
+    margin-left: auto;
+    flex-shrink: 0;
   }
 
   .header-contact {
@@ -2017,6 +2115,8 @@ body.nav-open .scroll-top-fab {
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100%;
+    max-width: 100%;
     margin: 0;
     padding: 1.5rem;
     padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
@@ -2024,13 +2124,13 @@ body.nav-open .scroll-top-fab {
     padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 0px));
     flex-direction: column;
     align-items: stretch;
-    background: rgba(6, 11, 20, 0.98);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    box-sizing: border-box;
+    background: rgba(6, 11, 20, 0.99);
     transform: translateX(100%);
     transition: transform 0.25s ease;
     z-index: 110;
     overflow: auto;
+    overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -2042,6 +2142,7 @@ body.nav-open .scroll-top-fab {
     padding: 0.85rem 0;
     border-bottom: 1px solid var(--border);
     font-size: 1.05rem;
+    flex-shrink: 0;
   }
 
   body.nav-open {
