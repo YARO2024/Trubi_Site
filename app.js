@@ -147,4 +147,53 @@
       });
     });
   });
+
+  (function pipeIntro() {
+    var boot = document.getElementById("boot-pipe");
+    if (!boot) return;
+    var reduce =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      boot.remove();
+      return;
+    }
+    try {
+      if (sessionStorage.getItem("sltPipeIntro") === "1") {
+        boot.remove();
+        return;
+      }
+    } catch (e) {
+      /* private mode */
+    }
+    var path = boot.querySelector(".boot-pipe__path");
+    if (!path || typeof path.getTotalLength !== "function") {
+      boot.remove();
+      return;
+    }
+    var len = path.getTotalLength();
+    path.style.strokeDasharray = String(len);
+    path.style.strokeDashoffset = String(len);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        path.style.transition = "stroke-dashoffset 1.05s cubic-bezier(0.22, 1, 0.36, 1)";
+        path.style.strokeDashoffset = "0";
+      });
+    });
+    setTimeout(function () {
+      boot.classList.add("boot-pipe--out");
+      try {
+        sessionStorage.setItem("sltPipeIntro", "1");
+      } catch (e2) {
+        /* ignore */
+      }
+    }, 1680);
+    boot.addEventListener(
+      "transitionend",
+      function (ev) {
+        if (ev.propertyName !== "opacity") return;
+        boot.remove();
+      },
+      { once: true }
+    );
+  })();
 })();

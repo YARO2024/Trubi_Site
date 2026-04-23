@@ -333,21 +333,129 @@ a:hover {
   flex-wrap: wrap;
 }
 
-.site-nav a {
+.site-nav a,
+.site-nav__link {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;
   padding: 0.35rem 0;
-  transition: color 0.15s ease;
+  transition:
+    color 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.2s ease,
+    transform 0.18s ease;
 }
 
-.site-nav a:hover {
+.site-nav a:hover,
+.site-nav__link:hover {
   color: var(--text);
 }
 
-.site-nav .nav-cta {
-  color: var(--accent);
+@media (min-width: 961px) {
+  .site-nav--desktop-pills {
+    gap: 0.4rem;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .site-nav--desktop-pills .site-nav__link--extra {
+    display: none;
+  }
+
+  .site-nav--desktop-pills .site-nav__link--primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+    color: rgba(242, 247, 255, 0.88);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) inset;
+    white-space: nowrap;
+  }
+
+  .site-nav--desktop-pills .site-nav__link--primary:hover {
+    color: var(--text);
+    background: linear-gradient(180deg, rgba(34, 211, 238, 0.12) 0%, rgba(255, 92, 26, 0.08) 100%);
+    border-color: rgba(34, 211, 238, 0.35);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.08) inset,
+      0 12px 28px rgba(0, 0, 0, 0.35);
+    transform: translateY(-1px);
+  }
+
+  .site-nav--desktop-pills .site-nav__link--primary:active {
+    transform: translateY(0);
+  }
+
+  .site-nav--desktop-pills .site-nav__link--cta {
+    color: #1a0f08;
+    background: linear-gradient(135deg, #ff7a35 0%, var(--accent) 45%, #ff4508 100%);
+    border-color: rgba(255, 180, 120, 0.45);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.35) inset,
+      0 10px 28px rgba(255, 92, 26, 0.35);
+  }
+
+  .site-nav--desktop-pills .site-nav__link--cta:hover {
+    color: #140a06;
+    background: linear-gradient(135deg, #ff8f50 0%, var(--accent-hover) 50%, #ff5c1a 100%);
+    border-color: rgba(255, 200, 150, 0.55);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.4) inset,
+      0 14px 36px rgba(255, 92, 26, 0.42);
+  }
+}
+
+/* Заставка: труба при первом открытии (только главная, см. app.js) */
+.boot-pipe {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 1.5rem;
+  background: radial-gradient(ellipse 75% 55% at 50% 42%, rgba(11, 20, 36, 0.55), rgba(6, 11, 20, 0.94));
+  pointer-events: none;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 0.55s ease,
+    visibility 0.55s ease;
+}
+
+.boot-pipe--out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.boot-pipe__inner {
+  width: min(92vw, 440px);
+}
+
+.boot-pipe__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 22px rgba(255, 92, 26, 0.4)) drop-shadow(0 0 40px rgba(34, 211, 238, 0.2));
+}
+
+.boot-pipe__path {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boot-pipe {
+    display: none !important;
+  }
 }
 
 .header-contact {
